@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="tqy3.css">
+</head>
+<body>
+	<main>
+		  <div class="box">
+		         <div class="inner-box">
+		           <div class="forms-wrap">
+		             <form action="index.html" autocomplete="off" class="sign-in-form">
+		               <div class="logo">
+		                 <img src="img/key2.png" alt="easyclass" />
+		                 <h4>key.com</h4>
+		               </div>
+		 
+		               <div class="heading">
+		                 <h2>欢迎来到key社</h2>
+		                 <h6>还没有账户？</h6>
+		                 <a href="#" class="toggle">去注册</a>
+		               </div>
+		 
+		               <div class="actual-form">
+		                 <div class="input-wrap">
+		                   <input
+		                     type="text"
+		                     minlength="4"
+		                     class="input-field"
+		                     autocomplete="off"
+		                     required
+		                   />
+		                   <label>账户名</label>
+		                 </div>
+		 
+		                 <div class="input-wrap">
+		                   <input
+		                     type="password"
+		                     minlength="4"
+		                     class="input-field"
+		                     autocomplete="off"
+		                     required
+		                   />
+		                   <label>密码</label>
+		                 </div>
+		                 <input type="submit" value="登录" class="sign-btn" />
+		                 <p class="text">
+		                   忘了你的账户或者密码？
+		                   <a href="#">请求帮助</a>
+		                 </p>
+		               </div>
+		             </form>
+		 
+		             <form action="index.html" autocomplete="off" class="sign-up-form">
+		               <div class="logo">
+		                 <img src="img/key2.png" alt="Key" />
+		                 <h4>Key</h4>
+		               </div>
+		 
+		               <div class="heading">
+		                 <h2>Key account</h2>
+		                 <h6>你已经有账户了？</h6>
+		                 <a href="#" class="toggle">去登录</a>
+		               </div>
+		 
+		               <div class="actual-form">
+		                 <div class="input-wrap">
+		                   <input
+		                     type="text"
+		                     minlength="4"
+		                     class="input-field"
+		                     autocomplete="off"
+		                     required
+		                   />
+		                   <label>账户名</label>
+		                 </div>
+		 
+		                 <div class="input-wrap">
+		                   <input
+		                     type="email"
+		                     class="input-field"
+		                     autocomplete="off"
+		                     required
+		                   />
+		                   <label>邮箱</label>
+		                 </div>
+		 
+		                 <div class="input-wrap">
+		                   <input
+		                     type="password"
+		                     minlength="4"
+		                     class="input-field"
+		                     autocomplete="off"
+		                     required
+		                   />
+		                   <label>密码</label>
+		                 </div>
+		 
+		                 <input type="submit" value="注册" class="sign-btn" />
+		 
+		                 <p class="text">
+		                   我同意加入key所有合法的条例和规定
+		                   <a href="#">条例</a>和
+		                   <a href="#">规定</a>
+		                 </p>
+		               </div>
+		             </form>
+		           </div>
+		 
+		           <div class="carousel">
+		             <div class="images-wrapper">
+		               <img src="img/01.jpg" class="image img-1 show" alt="" />
+		               <img src="img/02.jpg" class="image img-2" alt="" />
+		               <img src="img/04.jpg" class="image img-3" alt="" />
+		             </div>
+		 
+		             <div class="text-slider">
+		               <div class="text-wrap">
+		                 <div class="text-group">
+		                   <h2>想知道最新作品情报？</h2>
+		                   <h2>想获得独家手绘壁纸？</h2>
+		                   <h2>想参加面对面的访谈？</h2>
+		                 </div>
+		               </div>
+		 
+		               <div class="bullets">
+		                 <span class="active" data-value="1"></span>
+		                 <span data-value="2"></span>
+		                 <span data-value="3"></span>
+		               </div>
+		             </div>
+		           </div>
+		         </div>
+		       </div>
+	</main>
+	<script>
+const inputs = document.querySelectorAll(".input-field");
+const toggle_btn = document.querySelectorAll(".toggle");
+const main = document.querySelector("main");
+const bullets = document.querySelectorAll(".bullets span");
+const images = document.querySelectorAll(".image");
+
+inputs.forEach((inp) => {
+  inp.addEventListener("focus", () => {
+    inp.classList.add("active");
+  });
+  inp.addEventListener("blur", () => {
+    if (inp.value != "") return;
+    inp.classList.remove("active");
+  });
+});
+
+toggle_btn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    main.classList.toggle("sign-up-mode");
+  });
+});
+
+function moveSlider() {
+  let index = this.dataset.value;
+
+  let currentImage = document.querySelector(`.img-${index}`);
+  images.forEach((img) => img.classList.remove("show"));
+  currentImage.classList.add("show");
+
+  const textSlider = document.querySelector(".text-group");
+  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+  bullets.forEach((bull) => bull.classList.remove("active"));
+  this.classList.add("active");
+}
+
+bullets.forEach((bullet) => {
+  bullet.addEventListener("click", moveSlider);
+});
+
+</script>
+
+</body>
+</html>
